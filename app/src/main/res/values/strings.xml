@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">YouTubeBackground</string>
+    <string name="splash_screen_text">Youtube Background</string>
 </resources>
