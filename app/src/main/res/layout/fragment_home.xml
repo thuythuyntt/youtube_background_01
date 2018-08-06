@@ -1,8 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.youtu.sleep.youtubebackground.screens.main.home.HomeFragment">
+    android:orientation="vertical">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_most_popular_videos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
 
-</FrameLayout>
+</LinearLayout>
