@@ -15,10 +15,12 @@ import com.youtu.sleep.youtubebackground.utils.Contants;
 public class TextViewCustom extends TextView {
     public TextViewCustom(Context context) {
         super(context);
+        applyCustomFont(context);
     }
 
     public TextViewCustom(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        applyCustomFont(context);
     }
 
     public TextViewCustom(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
