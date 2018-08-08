@@ -9,27 +9,26 @@ import android.widget.TextView;
 import com.youtu.sleep.youtubebackground.utils.Contants;
 
 /**
- * Created by DaiPhongPC on 7/31/2018.
+ * Created by thuy on 06/08/2018.
  */
-
-public class TextViewCustom extends TextView {
-    public TextViewCustom(Context context) {
+public class TextViewContentCustom extends TextView {
+    public TextViewContentCustom(Context context) {
         super(context);
         applyCustomFont(context);
     }
 
-    public TextViewCustom(Context context, @Nullable AttributeSet attrs) {
+    public TextViewContentCustom(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         applyCustomFont(context);
     }
 
-    public TextViewCustom(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TextViewContentCustom(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         applyCustomFont(context);
     }
 
     public void applyCustomFont(Context context) {
-        Typeface typeface = FontCache.getTypeface(context, Contants.NAME_FONT);
+        Typeface typeface = FontCache.getTypeface(context, Contants.NAME_FONT_2);
         setTypeface(typeface);
     }
 }
