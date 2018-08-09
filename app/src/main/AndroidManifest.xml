@@ -12,14 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.splash.SplashActivity">
+        <activity android:name=".screens.splash.SplashActivity" />
+        <activity android:name=".screens.main.MainActivity" />
+        <activity android:name=".screens.video.VideoCallbackActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.main.MainActivity" />
+
+        <service android:name=".screens.video.VideoService">
+            <intent-filter>
+                <action android:name="com.youtu.sleep.youtubebackground.PLAYNEW" />
+                <action android:name="com.youtu.sleep.youtubebackground.PLAY" />
+                <action android:name="com.youtu.sleep.youtubebackground.NEXT" />
+                <action android:name="com.youtu.sleep.youtubebackground.PRE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
