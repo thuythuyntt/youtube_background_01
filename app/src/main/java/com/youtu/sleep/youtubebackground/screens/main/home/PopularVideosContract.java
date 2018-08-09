@@ -9,9 +9,17 @@ public interface PopularVideosContract {
     interface View {
         void showPopularVideos(List<Video> videos);
         void showGetPopularVideosErrorMessage(String message);
+
+        void insertVideoListSuccessfully();
+        void insertVideoListUnsuccessfully();
+
+        void removeVideoFromFavouriteListSuccessfully();
+        void removeVideoFromFavouriteListUnsuccessfully();
     }
 
     interface Presenter {
         void getPopularVideos();
+        void insertVideoList(Video video);
+        void removeVideoList(Video video);
     }
 }

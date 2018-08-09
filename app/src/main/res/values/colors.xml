@@ -6,4 +6,6 @@
     <color name="color_blue">#00A6FF</color>
     <color name="color_white">#ffffff</color>
     <color name="color_black">#131313</color>
+    <color name="color_gray_opacity">#42c1c1c1</color>
+    <color name="color_blue_opacity">#4901749c</color>
 </resources>

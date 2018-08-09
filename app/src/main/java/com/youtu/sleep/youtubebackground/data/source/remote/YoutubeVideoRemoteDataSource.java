@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.youtu.sleep.youtubebackground.data.model.popularvideo.Video;
-import com.youtu.sleep.youtubebackground.data.source.PopularVideosDataSource;
+import com.youtu.sleep.youtubebackground.data.source.YoutubeVideoDataSource;
 
 import com.youtu.sleep.youtubebackground.utils.exception.ParseJSONException;
 
@@ -30,12 +30,21 @@ import static com.youtu.sleep.youtubebackground.utils.Contants.BASE_URL;
 /**
  * Created by thuy on 06/08/2018.
  */
-public class PopularVideosRemoteDataSource implements PopularVideosDataSource.RemoteDataSource {
+public class YoutubeVideoRemoteDataSource implements YoutubeVideoDataSource.RemoteDataSource {
 
-    private static final String MY_TAG = PopularVideosRemoteDataSource.class.getSimpleName();
+    private static final String MY_TAG = YoutubeVideoRemoteDataSource.class.getSimpleName();
     private OnGetPopularVideosListener mListener;
 
     private Exception mException = null;
+
+    private static YoutubeVideoRemoteDataSource instance;
+
+    public static YoutubeVideoRemoteDataSource getInstance(){
+        if(instance == null){
+            instance = new YoutubeVideoRemoteDataSource();
+        }
+        return instance;
+    }
 
     @Override
     public void getPopularVideos(OnGetPopularVideosListener listener) {
@@ -91,8 +100,7 @@ public class PopularVideosRemoteDataSource implements PopularVideosDataSource.Re
             JSONObject jsonObject = new JSONObject(s);
             JSONArray jsonArray = jsonObject.getJSONArray(ParameterPopularVideo.ITEMS_KEY);
             for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject id = jsonArray.getJSONObject(i).getJSONObject(ParameterPopularVideo.ID);
-                String idVideo = id.getString(ParameterPopularVideo.VIDEO_ID);
+                String id = jsonArray.getJSONObject(i).getString(ParameterPopularVideo.ID);
                 JSONObject snippet = jsonArray.getJSONObject(i).getJSONObject(ParameterPopularVideo.SNIPPET_KEY);
                 String title = snippet.getString(ParameterPopularVideo.TITLE_KEY);
                 String description = snippet.getString(ParameterPopularVideo.DES_KEY);
@@ -100,7 +108,7 @@ public class PopularVideosRemoteDataSource implements PopularVideosDataSource.Re
                 JSONObject high = snippet.getJSONObject(ParameterPopularVideo.THUMBNAILS_KEY)
                         .getJSONObject(ParameterPopularVideo.HIGH_KEY);
                 String url = high.getString(ParameterPopularVideo.URL_KEY);
-                videos.add(new Video(idVideo, title, channelTitle, description, url));
+                videos.add(new Video(id, title, channelTitle, description, url));
             }
         } catch (JSONException e) {
             throw new ParseJSONException(e);
@@ -157,7 +165,6 @@ public class PopularVideosRemoteDataSource implements PopularVideosDataSource.Re
 
         String ITEMS_KEY = "items";
         String ID = "id";
-        String VIDEO_ID = "videoId";
         String SNIPPET_KEY = "snippet";
         String TITLE_KEY = "title";
         String DES_KEY = "description";

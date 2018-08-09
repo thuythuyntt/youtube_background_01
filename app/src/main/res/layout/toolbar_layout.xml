@@ -9,10 +9,11 @@
         android:layout_width="@dimen/dp_60"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
+        android:background="@drawable/image_selector"
         android:padding="@dimen/dp_10"
         android:src="@drawable/ic_back" />
 
-    <com.youtu.sleep.youtubebackground.widget.textviews.TextViewCustom
+    <com.youtu.sleep.youtubebackground.widget.textviews.TextViewHeaderCustom
         android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
