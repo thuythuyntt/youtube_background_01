@@ -13,4 +13,9 @@ public class Contants {
      */
     public static final String BASE_URL = "https://www.googleapis.com/youtube/v3/videos?";
 
+    public static final String EXTRA_LIST_VIDEOS = "urlsvideos";
+    public static final String EXTRA_POSS = "positionvideos";
+
+    public static final String EXTRA_POS_VIDEO = "positionvideo";
+    public static final String EXTRA_LIST_VIDEO = "listvideo";
 }

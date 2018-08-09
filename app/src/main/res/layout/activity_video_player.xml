@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,11 +13,21 @@
     <SurfaceView
         android:id="@+id/sf_video"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_100"
+        android:layout_height="@dimen/dp_200"
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/sf_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/sf_video" />
 
     <SeekBar
         android:id="@+id/seekbar_video"
@@ -28,8 +39,8 @@
         android:thumb="@drawable/ic_arrow_down"
         app:layout_constraintTop_toBottomOf="@id/sf_video" />
 
-    <com.youtu.sleep.youtubebackground.widget.textviews.TextViewCustom
-        android:id="@+id/text_curent"
+    <com.youtu.sleep.youtubebackground.widget.textviews.TextViewHeaderCustom
+        android:id="@+id/text_current"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_20"
@@ -46,6 +57,7 @@
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/image_control_selector"
         android:padding="@dimen/dp_10"
         android:src="@drawable/ic_favourite_unable"
         app:layout_constraintEnd_toStartOf="@+id/image_prev"
@@ -58,6 +70,7 @@
         android:layout_width="@dimen/dp_50"
         android:layout_height="@dimen/dp_50"
         android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/image_control_selector"
         android:padding="@dimen/dp_8"
         android:src="@drawable/ic_previous"
         app:layout_constraintEnd_toStartOf="@+id/image_play"
@@ -70,6 +83,7 @@
         android:layout_width="@dimen/dp_50"
         android:layout_height="@dimen/dp_50"
         android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/image_control_selector"
         android:padding="@dimen/dp_8"
         android:src="@drawable/ic_play"
         app:layout_constraintEnd_toStartOf="@+id/image_next"
@@ -82,6 +96,7 @@
         android:layout_width="@dimen/dp_50"
         android:layout_height="@dimen/dp_50"
         android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/image_control_selector"
         android:padding="@dimen/dp_8"
         android:src="@drawable/ic_next"
         app:layout_constraintEnd_toStartOf="@+id/image_loop"
@@ -96,6 +111,7 @@
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/image_control_selector"
         android:padding="@dimen/dp_10"
         android:src="@drawable/ic_loop_ubable"
         app:layout_constraintEnd_toEndOf="parent"
