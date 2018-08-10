@@ -29,7 +29,7 @@ public class GetUrlVideoAsyncTask extends AsyncTask<List<Video>, Void, List<Vide
     public static final String METHOD_GET = "GET";
     public static final String QUALITY_VIDEO = "medium";
     private OnGetListUrlVideoYoutube mListener;
-    private Exception exception;
+    private Exception mException;
 
     public GetUrlVideoAsyncTask(OnGetListUrlVideoYoutube mListener) {
         this.mListener = mListener;
@@ -40,13 +40,13 @@ public class GetUrlVideoAsyncTask extends AsyncTask<List<Video>, Void, List<Vide
     protected List<Video> doInBackground(List<Video>[] lists) {
         List<Video> videos = lists[0];
         for (int i = 0; i < videos.size(); i++) {
-            String s = StringConverter.convertIdVideo(videos.get(i).getId());
+            String s = StringConverter.convertIdVideo(videos.get(i).getVideoId());
             try {
                 URL url = new URL(s);
                 String result = parsingJsonToList(getJsonFromUrl(url));
                 videos.get(i).setUrl(result);
             } catch (IOException | JSONException e) {
-                exception = e;
+                mException = e;
                 return null;
             }
         }
@@ -56,10 +56,10 @@ public class GetUrlVideoAsyncTask extends AsyncTask<List<Video>, Void, List<Vide
 
     @Override
     protected void onPostExecute(List<Video> videos) {
-        if (exception == null) {
+        if (mException == null) {
             mListener.onSuccess(videos);
         } else {
-            mListener.onError(exception.getMessage());
+            mListener.onError(mException.getMessage());
         }
     }
 

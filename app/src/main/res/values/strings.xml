@@ -5,6 +5,12 @@
     <string name="tab_favourite">Favourite</string>
     <string name="splash_screen_text">Youtube Background</string>
     <string name="connect_network_fail_message">Please check network connection</string>
+<<<<<<< HEAD
     <string name="load_video_data_fail_message">Something went wrong!</string>
+=======
+    <string name="fail_message">Something went wrong! </string>
+    <string name="add_favourite_video_success_message">Adding video to favourite list successfully!</string>
+    <string name="remove_favourite_video_success_message">Removing video from favourite list successfully!</string>
+>>>>>>> commit to checkout
     <string name="error_play_video">Can't play video</string>
 </resources>

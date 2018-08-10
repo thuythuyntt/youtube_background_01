@@ -57,12 +57,26 @@
             android:textColor="@color/color_black"
             android:textSize="@dimen/sp_12" />
 
-        <com.youtu.sleep.youtubebackground.widget.textviews.TextViewContentCustom
-            android:id="@+id/text_description"
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="2"
-            android:textSize="@dimen/sp_12" />
+            android:gravity="center">
+
+            <com.youtu.sleep.youtubebackground.widget.textviews.TextViewContentCustom
+                android:id="@+id/text_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="2"
+                android:textSize="@dimen/sp_12" />
+
+            <ImageView
+                android:id="@+id/image_favourite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_favourite_unable"
+                android:layout_marginLeft="@dimen/dp_8"/>
+        </TableRow>
     </LinearLayout>
 </RelativeLayout>
