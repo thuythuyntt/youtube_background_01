@@ -22,7 +22,8 @@ import android.widget.Toast;
 import com.youtu.sleep.youtubebackground.R;
 import com.youtu.sleep.youtubebackground.data.model.popularvideo.Video;
 import com.youtu.sleep.youtubebackground.data.repository.UrlVideoRepository;
-import com.youtu.sleep.youtubebackground.data.source.remote.UrlVideoRemoteDataSource;
+
+import com.youtu.sleep.youtubebackground.data.source.remote.playvideo.UrlVideoRemoteDataSource;
 import com.youtu.sleep.youtubebackground.screens.BaseActivity;
 import com.youtu.sleep.youtubebackground.utils.Contants;
 import com.youtu.sleep.youtubebackground.utils.common.StringConverter;
@@ -77,7 +78,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,
 
     @Override
     public String getIdVideo(int position) {
-        return getListVideo().get(position).getId();
+        return getListVideo().get(position).getVideoId();
     }
 
     @Override

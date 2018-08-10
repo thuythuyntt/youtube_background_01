@@ -1,7 +1,9 @@
 package com.youtu.sleep.youtubebackground.screens.main.home;
+
 import com.youtu.sleep.youtubebackground.data.model.popularvideo.Video;
-import com.youtu.sleep.youtubebackground.data.source.PopularVideosDataSource;
-import com.youtu.sleep.youtubebackground.data.source.remote.PopularVideosRemoteDataSource;
+import com.youtu.sleep.youtubebackground.data.repository.YoutubeVideoRepository;
+import com.youtu.sleep.youtubebackground.data.source.YoutubeVideoDataSource;
+
 import java.util.List;
 
 /**
@@ -10,16 +12,16 @@ import java.util.List;
 public class PopularVideosPresenter implements PopularVideosContract.Presenter {
 
     private PopularVideosContract.View mView;
-    private PopularVideosDataSource.RemoteDataSource mModel;
+    private YoutubeVideoRepository mModel;
 
-    public PopularVideosPresenter(PopularVideosContract.View mView) {
+    public PopularVideosPresenter(PopularVideosContract.View mView, YoutubeVideoRepository repository) {
         this.mView = mView;
-        this.mModel = new PopularVideosRemoteDataSource();
+        this.mModel = repository;
     }
 
     @Override
     public void getPopularVideos() {
-        mModel.getPopularVideos(new PopularVideosDataSource.OnGetPopularVideosListener() {
+        mModel.getPopularVideos(new YoutubeVideoDataSource.RemoteDataSource.OnGetPopularVideosListener() {
             @Override
             public void onSuccess(List<Video> videos) {
                 mView.showPopularVideos(videos);
@@ -30,5 +32,30 @@ public class PopularVideosPresenter implements PopularVideosContract.Presenter {
                 mView.showGetPopularVideosErrorMessage(message);
             }
         });
+    }
+
+    @Override
+    public void insertVideo(Video video) {
+        mModel.addToFavouriteVideoList(video, new YoutubeVideoDataSource.LocalDataSource.OnActionLocalListener() {
+            @Override
+            public void onSuccess() {
+                mView.insertVideoListSuccessfully();
+            }
+
+            @Override
+            public void onSuccess(List<Video> list) {
+                //nothing todo
+            }
+
+            @Override
+            public void onFail() {
+                mView.insertVideoListUnsuccessfully();
+            }
+        });
+    }
+
+    @Override
+    public void removeVideo(Video video) {
+
     }
 }
